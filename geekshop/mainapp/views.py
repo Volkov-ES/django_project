@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Category, Product
 
 MENU_LINKS = {
     "index": "Главная",
@@ -21,35 +22,21 @@ def index(request):
 
 
 def products(request):
+    categories = Category.objects.all() 
+    products = Product.objects.all() 
     return render(
         request,
         "mainapp/products.html",
         context={
             "title": "Продукты",
             "menu": MENU_LINKS,
-            "products": [
-                {
-                    "name": "Стул",
-                    "description": "отличный стул 1!",
-                    "image": "img/product-11.jpg",
-                },
-                {
-                    "name": "Стул",
-                    "description": "отличный стул 2!",
-                    "image": "img/product-21.jpg",
-                },
-                {
-                    "name": "Стул",
-                    "description": "отличный стул 3!",
-                    "image": "img/product-31.jpg",
-                },
-            ],
+            "products": products,
+            "categories": categories,
         },
     )
 
-    # Create your views here.
 
-
+    # View
 def contact(request):
     return render(
         request,
