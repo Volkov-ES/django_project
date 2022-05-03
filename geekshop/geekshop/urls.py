@@ -23,8 +23,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", mainapp.index),
     path("", mainapp.index, name="index"),
-    path("about/contact", mainapp.contact, name="contact"),
-    path("products/all", mainapp.products, name="products"),
+    path("contact", mainapp.contact, name="contact"),
+    path("all", mainapp.products, name="products"),
 ]
 
 if settings.DEBUG :
